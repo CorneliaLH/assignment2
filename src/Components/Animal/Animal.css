@@ -1,0 +1,40 @@
+section {
+  width: 30%;
+  margin: 10px;
+}
+
+section .animalCard {
+  width: 90%;
+  border: 5px solid #550d4f;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 2px 2px 2px grey;
+          box-shadow: 2px 2px 2px grey;
+  padding: 10px;
+}
+
+section .animalCard ul {
+  list-style-type: none;
+}
+
+section .animalCard ul img {
+  width: 80%;
+}
+
+section .animalCard button {
+  width: 50%;
+  -webkit-box-shadow: 2px 2px 2px grey;
+          box-shadow: 2px 2px 2px grey;
+}
+/*# sourceMappingURL=Animal.css.map */

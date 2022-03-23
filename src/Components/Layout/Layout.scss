@@ -1,0 +1,40 @@
+.content {
+  min-height: 100vh;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  background-color: rgba(0, 128, 128, 0.568);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  background-color: rgba(0, 128, 128, 0.568);
+}
+
+nav {
+  width: 100%;
+}
+
+.navList {
+  display: flex;
+  width: 70%;
+  list-style-type: none;
+  justify-content: space-evenly;
+}
