@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "./Components/Layout/Layout";
 import { Home } from "./Components/Home/Home";
-import { Animals } from "./Components/Animals/Animals";
 import { ShowAnimal } from "./Components/ShowAnimal/ShowAnimal";
 import { NotFound } from "./Components/NotFound/NotFound";
 import { About } from "./Components/About/About";
@@ -18,7 +17,6 @@ ReactDOM.render(
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/animals" element={<Animals />} />
           <Route path="/showanimal/:id" element={<ShowAnimal />} />
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -1,5 +1,5 @@
 .showAnimalSection {
-  width: 100vw;
+  width: 40vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,7 +16,7 @@
 }
 
 .showAnimalSection article {
-  width: 80vw;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,5 +39,12 @@
 .showAnimalSection article img {
   width: 200px;
   margin: 20px;
+}
+
+.showAnimalSection aside {
+  width: 40vw;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
 }
 /*# sourceMappingURL=ShowAnimal.css.map */

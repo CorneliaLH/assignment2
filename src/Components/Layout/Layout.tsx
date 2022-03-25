@@ -13,9 +13,6 @@ export function Layout() {
               <li>
                 <Link to="/about">Om</Link>
               </li>
-              <li>
-                <Link to="/animals">Djuren</Link>
-              </li>
             </ul>
           </nav>
         </header>
