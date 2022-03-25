@@ -153,7 +153,7 @@ export function ShowAnimal() {
                   Mata {animal?.name}
                 </button>
               );
-              //änsra isFed samt spara till localStorage
+              //ändrar isFed samt spara till localStorage
               let stringArrayLs: string =
                 localStorage.getItem("animal") || "[]";
               let animalLSArray = JSON.parse(stringArrayLs);
@@ -178,7 +178,7 @@ export function ShowAnimal() {
               //Event skickas iväg så home-komponenten visar vilja djur som har matats
               window.dispatchEvent(new Event("storage"));
               setButtonPushed(false);
-              //ta bort violation i console
+              //tar bort violation i console
               Promise.resolve().then(timer);
             }
           }, 1000);
