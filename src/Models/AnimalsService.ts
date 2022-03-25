@@ -1,14 +1,16 @@
 import axios from "axios";
 import { IAnimals } from "./IAnimals";
 class AnimalService {
-  GetAnimals() {
-    axios
+  async getAnimals() {
+    await axios
       .get<IAnimals[]>("https://animals.azurewebsites.net/api/animals")
       .then((response) => {
-        console.log(response.data);
         localStorage.setItem("animal", JSON.stringify(response.data));
+        window.dispatchEvent(new Event("storage"));
         return response.data;
-      });
+      })
+      .catch((error) => console.log("error" + error));
+    return;
   }
 }
 

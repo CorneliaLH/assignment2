@@ -7,31 +7,41 @@ import "./Home.css";
 export function Home() {
   const services = new AnimalService();
   const [animalArray, setAnimalArray] = useState<IAnimals[]>([]);
-  const [localStorageLength, setLocalStorageLength] = useState(0);
   const [isFed, setIsFed] = useState(false);
+  const [hungry, setHungry] = useState(false);
 
-  if (localStorage.length === 0) {
-    services.GetAnimals();
-    setTimeout(() => {
-      setLocalStorageLength(localStorage.length);
-    }, 1000);
-  }
-
+  //hämtar från api
+  useEffect(() => {
+    if (localStorage.length === 0) {
+      services.getAnimals();
+    }
+  }, []);
+  //läser in från localstorage
   useEffect(() => {
     let arrayStringLS = localStorage.getItem("animal") || "[]";
-
     let arrayFromLS = JSON.parse(arrayStringLS);
-    setIsFed(false);
-    callFuction(arrayFromLS);
-  }, [localStorageLength, isFed]);
-
-  function callFuction(arrayFromLS: IAnimals[]) {
     setAnimalArray(arrayFromLS);
-  }
-
-  window.addEventListener("storage", () => {
     setIsFed(true);
+  }, [isFed, hungry]);
+
+  // lyssnar efter event när localStorage uppdaterats.
+  let eventListenerLocalStorage: any = window.addEventListener(
+    "storage",
+    () => {
+      setIsFed(false);
+    }
+  );
+  //lyssnar efter när djur blir jättahungrigt
+  window.addEventListener("hungry", () => {
+    if (hungry === false) {
+      setHungry(true);
+    } else {
+      setHungry(false);
+    }
   });
+
+  //ta bort violation meddelande
+  Promise.resolve().then(eventListenerLocalStorage);
 
   return (
     <>
@@ -56,11 +66,19 @@ export function Home() {
           })}
         </article>
         <aside>
-          <h2>Hungriga djur som behöver matas:</h2>
+          <h2>Vrålhungriga djur som behöver matas:</h2>
           <ul className="hungryAnimals">
             {animalArray.map((animalFed) => {
               if (!animalFed.isFed) {
-                return <li key={animalFed.id}> {animalFed.name}</li>;
+                if (
+                  new Date(animalFed.lastFed).setSeconds(
+                    new Date(animalFed.lastFed).getSeconds() + 14400
+                  ) -
+                    new Date().getTime() <
+                  0
+                ) {
+                  return <li key={animalFed.id}> {animalFed.name}</li>;
+                }
               }
             })}
           </ul>
